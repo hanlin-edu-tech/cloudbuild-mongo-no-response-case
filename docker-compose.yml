@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  gradle:
+    image: openjdk:11-jdk-slim
+    depends_on:
+      - "mongo"
+
+  mongo:
+    image: mongo
+    restart: always
