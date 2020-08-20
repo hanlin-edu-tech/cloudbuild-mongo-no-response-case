@@ -9,9 +9,10 @@ import org.bson.Document;
 import org.junit.jupiter.api.*;
 
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 public class LibraryTest {
-
+    public static Logger logger = Logger.getLogger(LibraryTest.class.getName());
     public static MongoClient CLIENT;
 
     @BeforeAll
@@ -24,7 +25,7 @@ public class LibraryTest {
 
     @BeforeEach
     public void setupDB() {
-        System.out.println("setupDB start");
+        logger.info("setupDB start");
         CLIENT.getDatabase("ehanlin").getCollection("items").insertMany(Arrays.asList(
                 Document.parse("{\n" +
                         "\t\"_id\" : \"y105_g7_s1_pc_et\",\n" +
@@ -815,17 +816,17 @@ public class LibraryTest {
                         "    ]\n" +
                         "}")
         ));
-        System.out.println("setupDB end");
+        logger.info("setupDB end");
     }
 
     @AfterEach
     public void cleanDB() {
-        System.out.println("cleanDB start");
+        logger.info("cleanDB start");
         CLIENT.getDatabase("ehanlin").drop();
-        System.out.println("cleanDB end");
+        logger.info("cleanDB end");
     }
 
-    @RepeatedTest(1000)
+    @RepeatedTest(10000)
     @Test
     public void testLibrary() {
         Library lib = new Library(CLIENT);
