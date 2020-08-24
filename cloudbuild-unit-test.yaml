@@ -3,3 +3,5 @@ steps:
     args: ['run', '-v', '/workspace:/mnt', '-w', '/mnt', '--rm', 'gradle', './gradlew', 'test', '--info']
 
 timeout: 900s
+options:
+  machineType: 'N1_HIGHCPU_32'
