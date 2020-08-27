@@ -827,7 +827,6 @@ public class LibraryTest {
     }
 
     @RepeatedTest(10000)
-    @Test
     public void testLibrary() {
         Library lib = new Library(CLIENT);
         Document doc = lib.findOne("y104_g10_s1_en_hansheng_et");
